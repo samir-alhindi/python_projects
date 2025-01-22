@@ -1,0 +1,58 @@
+import keyboard
+
+taskList: list = []
+
+
+def main_menu():
+    print("\n----------To do list----------\n")
+
+    choice = input("-Enter '1' to add tasks to your list\n-Enter '2' to view your list\n-Enter '3' to delete tasks from your list\n")
+
+    if choice == '1':
+        add_tasks()
+    elif choice == '2':
+        view_list()
+    elif choice == '3':
+        print("Calling 3")
+        delete_tasks()
+
+
+def add_tasks():
+    task: str = "Test"
+    while task != 'q':
+        task = input("\nPlease enter the task here (Or press 'q' to quit): ")
+        if task != 'q':
+            taskList.append(task)
+
+    main_menu()
+
+def view_list():
+    print("\n-Task List-")
+    print("-----------")
+    for item in taskList:
+        index = taskList.index(item) + 1
+        print(f"{index}- {item}")
+    print("-----------")
+    print("Press 'Space' to return to the main menu.")
+
+    keyboard.wait('space')
+    print('space was pressed, continuing...\n')
+    main_menu()
+
+def delete_tasks():
+    deleteIndex = "test"
+    while deleteIndex != 'q':
+        print("-----------")
+        for item in taskList:
+            index = taskList.index(item) + 1
+            print(f"{index}- {item}")
+        print("-----------")
+        deleteIndex = input("Please enter the number of the item that you wanna delete or press 'q' to quit: ")
+        if deleteIndex != 'q':
+            taskList.pop(int(deleteIndex) - 1)
+    main_menu()
+    
+
+#-------------
+
+main_menu()

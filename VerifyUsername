@@ -1,0 +1,33 @@
+#Libraries / Modules.
+import keyboard
+
+#Variables:
+
+username: str
+
+#Functions declarations: 
+
+def take_input():
+    userNameAttempt = input("Please enter a valid username: ")
+    check_validity(userNameAttempt)
+
+
+
+def check_validity(userNameAttempt):
+    if len(userNameAttempt) > 12 or userNameAttempt.find(" ") != -1 or any(char.isdigit() for char in userNameAttempt):
+        print("Invalid !\nPress 'Space' to try again.")
+        keyboard.wait('space')
+        take_input()
+    else:
+        set_username(userNameAttempt)
+        
+
+
+def set_username(userNameAttempt):
+    username = userNameAttempt
+    print("username has been successfully set.")
+#---------------------
+
+#Running the code:
+
+take_input()
